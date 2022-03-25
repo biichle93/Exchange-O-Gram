@@ -2,6 +2,7 @@ package com.example.exchange_o_gram
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
@@ -9,6 +10,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import com.parse.FindCallback
+import com.parse.ParseException
+import com.parse.ParseQuery
 import com.parse.ParseUser
 
 
@@ -17,25 +21,37 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.Toolbar)
-        val btnLogout = findViewById<Button>(R.id.logout)
+
+        queryPosts()
 
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
+
+    private fun queryPosts() {
+        // Specify which class to query
+        val query: ParseQuery<Post> = ParseQuery.getQuery(Post::class.java)
+        query.include(Post.KEY_USER)
+        // Find all posts
+        query.findInBackground(object: FindCallback<Post>{
+            override fun done(posts: MutableList<Post>?, e: ParseException?) {
+                if(e != null){
+                    //something has went wrong
+                    Log.e(TAG, "Error finding posts")
+                }else{
+                    if(posts != null){
+                        for(post in posts){
+                           Log.i(TAG, "Post: ${post.getDescription()}")
+                        }
+                    }
+                }
+            }
+
+        })
     }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        var selected = false
-        val id =item.itemId
-        if (id == R.id.logout) {
-            selected = true
-        }
-        return selected
+    companion object{
+        const val TAG = "MainActivity"
     }
+
+    //called from XML in toolbar button
     fun returnToLogin(v: View?){
         Toast.makeText(this, "Logout Success", Toast.LENGTH_SHORT).show()
         ParseUser.logOut()

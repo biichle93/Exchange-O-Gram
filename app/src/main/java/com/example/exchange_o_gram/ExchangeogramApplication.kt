@@ -2,10 +2,12 @@ package com.example.exchange_o_gram
 
 import android.app.Application
 import com.parse.Parse
+import com.parse.ParseObject
 
 class ExchangeogramApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        ParseObject.registerSubclass(Post::class.java)
         Parse.initialize(
             Parse.Configuration.Builder(this)
                 .applicationId(getString(R.string.back4app_app_id))

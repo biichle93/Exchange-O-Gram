@@ -22,15 +22,37 @@
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Headline"
         app:titleTextColor="@color/black">
         <Button
-            android:id="@+id/btnLogout"
-            android:onClick="returnToLogin"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="@drawable/ic_logout_svgrepo_com"
+            android:id="@+id/btnMessage"
+            android:layout_margin="8dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/direct"
             android:layout_gravity="right"
             android:layout_marginEnd="8dp"
             >
         </Button>
+        <Button
+            android:id="@+id/btnFavorites"
+            android:layout_margin="8dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ufi_heart"
+            android:layout_gravity="right"
+            android:layout_marginEnd="8dp"
+            >
+        </Button>
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_margin="8dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/ic_plus"
+            android:backgroundTint="@color/black"
+            android:layout_gravity="right"
+            android:layout_marginEnd="8dp"
+            >
+        </Button>
+
 
     </androidx.appcompat.widget.Toolbar>
 
