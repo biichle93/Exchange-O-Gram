@@ -23,7 +23,7 @@
         app:titleTextColor="@color/black">
         <Button
             android:id="@+id/btnMessage"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/direct"
@@ -33,7 +33,7 @@
         </Button>
         <Button
             android:id="@+id/btnFavorites"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/ufi_heart"
@@ -43,7 +43,7 @@
         </Button>
         <Button
             android:id="@+id/btnAdd"
-            android:layout_margin="8dp"
+            android:layout_margin="12dp"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:background="@drawable/ic_plus"

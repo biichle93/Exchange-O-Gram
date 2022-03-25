@@ -15,9 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExchangeOGram">
         <activity
-            android:name=".SignupActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:name=".ComposeActivity"
             android:exported="false" />
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
 
         <meta-data
             android:name="com.parse.SERVER_URL"
@@ -41,10 +44,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"
+            android:theme="@style/Theme.ExchangeOGram"></activity>
     </application>
 
 </manifest>

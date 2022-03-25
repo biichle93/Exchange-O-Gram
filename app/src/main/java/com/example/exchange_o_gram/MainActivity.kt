@@ -20,10 +20,27 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.Toolbar)
-
         queryPosts()
+        listeners()
 
+    }
+
+    private fun listeners() {
+        //find buttons to listen for
+        val btnAdd = findViewById<Button>(R.id.btnAdd)
+        //set listeners
+        btnAdd.setOnClickListener(){
+            val intent = Intent(this, ComposeActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    //called from XML in toolbar button
+    fun returnToLogin(v: View?){
+        Toast.makeText(this, "Logout Success", Toast.LENGTH_SHORT).show()
+        ParseUser.logOut()
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
 
     private fun queryPosts() {
@@ -39,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                 }else{
                     if(posts != null){
                         for(post in posts){
-                           Log.i(TAG, "Post: ${post.getDescription()}")
+                            Log.i(TAG, "Post: ${post.getDescription()}")
                         }
                     }
                 }
@@ -49,13 +66,5 @@ class MainActivity : AppCompatActivity() {
     }
     companion object{
         const val TAG = "MainActivity"
-    }
-
-    //called from XML in toolbar button
-    fun returnToLogin(v: View?){
-        Toast.makeText(this, "Logout Success", Toast.LENGTH_SHORT).show()
-        ParseUser.logOut()
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
     }
 }
